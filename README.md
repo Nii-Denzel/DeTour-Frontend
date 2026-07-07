@@ -113,7 +113,7 @@ detour/
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/detour.git
+git clone https://github.com/Nii-Denzel/DeTour-Frontend
 cd detour
 ```
 
