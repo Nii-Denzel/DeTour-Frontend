@@ -9,13 +9,11 @@ designed mobile experience.
 
 ---
 
-## 📱 Screenshots
 
-> _Add your screenshots here_
 
-| Splash | Home | Explore |
-|--------|------|---------|
-| ![](./assets/screenshots/splash.png) | ![](./assets/screenshots/home.png) | ![](./assets/screenshots/explore.png) |
+| Splash | Icon |
+|--------|------|
+| ![](./assets/images/landingScreen.jpg) | ![](./assets/images/detourIcon.jpg) |
 
 | Map | Detail | Book |
 |-----|--------|------|
