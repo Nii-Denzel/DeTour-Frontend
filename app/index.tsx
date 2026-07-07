@@ -38,7 +38,8 @@ export default function WelcomeScreen(): React.JSX.Element {
 
       <SafeAreaView style={styles.overlayContainer}>
         {/* Top Spacer to push content down beautifully */}
-        <View style={styles.topSpacer} />
+
+        <Text style={styles.topSpacer}>Built with love for Ghana</Text>
 
         {/* Content Section (Buttons and footer) */}
         <View style={styles.contentContainer}>
@@ -81,7 +82,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   topSpacer: {
-    flex: 1, // Dynamically pushes the buttons to the bottom third of the screen, just like the original image
+    marginTop: 200,
+    color: "white",
+    letterSpacing: 19,
+    alignItems: "stretch",
+    fontSize: 35,
+    fontWeight: 700,
+    textAlign: "center",
   },
   contentContainer: {
     paddingHorizontal: 24,
