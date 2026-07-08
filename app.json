@@ -15,6 +15,10 @@
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE"
       },
+      "androidNavigationBar": {
+        "visible": "true",
+        "translucent": true
+      },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
     },

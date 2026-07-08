@@ -1,26 +1,170 @@
+// import { useRouter } from "expo-router";
+// import React from "react";
+
+// import {
+//   ImageBackground,
+//   SafeAreaView,
+//   StatusBar,
+//   StyleSheet,
+//   Text,
+//   TouchableOpacity,
+//   View,
+// } from "react-native";
+
+// export default function WelcomeScreen(): React.JSX.Element {
+//   const router = useRouter();
+
+//   const handleGetStarted = (): void => {
+//     // Replace with your actual destination route (e.g., '/auth/register' or '/home')
+//     router.push("/home");
+//   };
+
+//   const handleExploreAsGuest = (): void => {
+//     // Replace with your guest landing page route
+//     router.push("/explore");
+//   };
+
+//   return (
+//     <ImageBackground
+//       source={require("../assets/images/landingScreen.jpg")}
+//       style={styles.backgroundImage}
+//       resizeMode="cover"
+//     >
+//       <StatusBar
+//         barStyle="light-content"
+//         backgroundColor="transparent"
+//         translucent
+//       />
+
+//       <SafeAreaView style={styles.overlayContainer}>
+//         {/* Top Spacer to push content down beautifully */}
+
+//         <Text style={styles.topSpacer}>Built with love for Ghana</Text>
+
+//         {/* Content Section (Buttons and footer) */}
+//         <View style={styles.contentContainer}>
+//           {/* Main Call to Action Button */}
+//           <TouchableOpacity
+//             style={styles.primaryButton}
+//             onPress={handleGetStarted}
+//             activeOpacity={0.8}
+//           >
+//             <Text style={styles.primaryButtonText}>Get Started</Text>
+//           </TouchableOpacity>
+
+//           {/* Secondary Outline Button */}
+//           <TouchableOpacity
+//             style={styles.secondaryButton}
+//             onPress={handleExploreAsGuest}
+//             activeOpacity={0.7}
+//           >
+//             <Text style={styles.secondaryButtonText}>Explore as Guest</Text>
+//           </TouchableOpacity>
+
+//           {/* Footer Attribution */}
+//           <View style={styles.footerContainer}>
+//             <Text style={styles.footerText}>
+//               Built with <Text style={styles.heartText}>❤️</Text> for Ghana
+//             </Text>
+//           </View>
+//         </View>
+//       </SafeAreaView>
+//     </ImageBackground>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   backgroundImage: {
+//     flex: 1,
+//   },
+//   overlayContainer: {
+//     flex: 1,
+//     justifyContent: "space-between",
+//   },
+//   topSpacer: {
+//     marginTop: 200,
+//     color: "white",
+//     letterSpacing: 19,
+//     alignItems: "stretch",
+//     fontSize: 35,
+//     fontWeight: 700,
+//     textAlign: "center",
+//   },
+//   contentContainer: {
+//     paddingHorizontal: 24,
+//     paddingBottom: 20,
+//     width: "100%",
+//     alignItems: "center",
+//   },
+//   primaryButton: {
+//     backgroundColor: "#FFC72C", // Matches the vibrant gold/yellow from 1782375388427.jpeg
+//     width: "100%",
+//     height: 50,
+//     borderRadius: 28,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     marginBottom: 16,
+//     shadowColor: "#000",
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.1,
+//     shadowRadius: 4,
+//     elevation: 3, // Shadow for Android
+//   },
+//   primaryButtonText: {
+//     color: "#03331D", // Deep forest green text for high legibility
+//     fontSize: 16,
+//     fontWeight: "700",
+//   },
+//   secondaryButton: {
+//     backgroundColor: "transparent",
+//     width: "100%",
+//     height: 50,
+//     borderRadius: 28,
+//     borderWidth: 1,
+//     borderColor: "rgba(255, 255, 255, 0.6)", // Clean translucent white border
+//     justifyContent: "center",
+//     alignItems: "center",
+//     marginBottom: 32,
+//   },
+//   secondaryButtonText: {
+//     color: "#FFFFFF",
+//     fontSize: 16,
+//     fontWeight: "600",
+//   },
+//   footerContainer: {
+//     marginBottom: 40,
+//   },
+//   footerText: {
+//     color: "rgba(255, 255, 255, 0.8)",
+//     fontSize: 13,
+//     fontWeight: "500",
+//     letterSpacing: 0.3,
+//   },
+//   heartText: {
+//     color: "#E31B23", // Clean red emoji alignment
+//   },
+// });
 import { useRouter } from "expo-router";
 import React from "react";
-
 import {
   ImageBackground,
-  SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function WelcomeScreen(): React.JSX.Element {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
 
   const handleGetStarted = (): void => {
-    // Replace with your actual destination route (e.g., '/auth/register' or '/home')
     router.push("/home");
   };
 
   const handleExploreAsGuest = (): void => {
-    // Replace with your guest landing page route
     router.push("/explore");
   };
 
@@ -36,13 +180,25 @@ export default function WelcomeScreen(): React.JSX.Element {
         translucent
       />
 
-      <SafeAreaView style={styles.overlayContainer}>
-        {/* Top Spacer to push content down beautifully */}
-
+      {/* 
+        Changed from SafeAreaView to a standard View. 
+        We pass insets.top to handle status bar spacing perfectly.
+      */}
+      <View style={[styles.overlayContainer, { paddingTop: insets.top }]}>
+        {/* Top Spacer/Title */}
         <Text style={styles.topSpacer}>Built with love for Ghana</Text>
 
-        {/* Content Section (Buttons and footer) */}
-        <View style={styles.contentContainer}>
+        {/* 
+          Content Section.
+          We use insets.bottom to ensure the elements are safely padded 
+          above the phone's bottom software navigation line/buttons.
+        */}
+        <View
+          style={[
+            styles.contentContainer,
+            { paddingBottom: Math.max(insets.bottom, 20) },
+          ]}
+        >
           {/* Main Call to Action Button */}
           <TouchableOpacity
             style={styles.primaryButton}
@@ -68,7 +224,7 @@ export default function WelcomeScreen(): React.JSX.Element {
             </Text>
           </View>
         </View>
-      </SafeAreaView>
+      </View>
     </ImageBackground>
   );
 }
@@ -82,22 +238,20 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   topSpacer: {
-    marginTop: 200,
+    marginTop: 120, // Adjusted down slightly to avoid clamping close to top notches
     color: "white",
-    letterSpacing: 19,
-    alignItems: "stretch",
-    fontSize: 35,
-    fontWeight: 700,
+    letterSpacing: 2, // Scaled down from 19 so text wraps/displays cleanly on smaller devices
+    fontSize: 32,
+    fontWeight: "700",
     textAlign: "center",
   },
   contentContainer: {
     paddingHorizontal: 24,
-    paddingBottom: 20,
     width: "100%",
     alignItems: "center",
   },
   primaryButton: {
-    backgroundColor: "#FFC72C", // Matches the vibrant gold/yellow from 1782375388427.jpeg
+    backgroundColor: "#FFC72C",
     width: "100%",
     height: 50,
     borderRadius: 28,
@@ -108,10 +262,10 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    elevation: 3, // Shadow for Android
+    elevation: 3,
   },
   primaryButtonText: {
-    color: "#03331D", // Deep forest green text for high legibility
+    color: "#03331D",
     fontSize: 16,
     fontWeight: "700",
   },
@@ -121,10 +275,10 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 28,
     borderWidth: 1,
-    borderColor: "rgba(255, 255, 255, 0.6)", // Clean translucent white border
+    borderColor: "rgba(255, 255, 255, 0.6)",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 32,
+    marginBottom: 24,
   },
   secondaryButtonText: {
     color: "#FFFFFF",
@@ -132,7 +286,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   footerContainer: {
-    marginBottom: 40,
+    marginBottom: 10, // Let the layout hook handle the heavy lifting for the edge margin
   },
   footerText: {
     color: "rgba(255, 255, 255, 0.8)",
@@ -141,6 +295,6 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   heartText: {
-    color: "#E31B23", // Clean red emoji alignment
+    color: "#E31B23",
   },
 });

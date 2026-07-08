@@ -37,10 +37,10 @@ const ACCRA_FALLBACK: Region = {
 };
 
 const MAP_FILTERS = [
-  { id: "All", label: "All", icon: "map-marked-alt", lib: "FA5" },
-  { id: "Heritage", label: "Heritage", icon: "bank", lib: "MCI" },
-  { id: "Park", label: "Parks", icon: "tree-outline", lib: "MCI" },
-  { id: "Beach", label: "Beaches", icon: "beach", lib: "MCI" },
+  { id: "all", label: "All", icon: "map-marked-alt", lib: "FA5" },
+  { id: "heritage", label: "Heritage", icon: "bank", lib: "MCI" },
+  { id: "park", label: "Parks", icon: "tree-outline", lib: "MCI" },
+  { id: "beach", label: "Beaches", icon: "beach", lib: "MCI" },
 ];
 
 const MAP_STYLE = [
@@ -249,7 +249,7 @@ export default function MapScreen() {
               style={{
                 flexDirection: "row",
                 alignItems: "center",
-                gap: 4,
+                gap: 40,
                 backgroundColor: "#FEF3C7",
                 borderRadius: 10,
                 paddingHorizontal: 8,

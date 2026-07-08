@@ -96,10 +96,10 @@ export default function HomeScreen() {
           style={{
             backgroundColor: Colors.green,
             paddingHorizontal: 20,
-            paddingTop: 50,
+            paddingTop: 10,
             paddingBottom: 30,
             borderBottomLeftRadius: 32,
-            borderBottomRightRadius: 32,
+            borderBottomRightRadius: 30,
           }}
         >
           {/* Greeting + bell */}

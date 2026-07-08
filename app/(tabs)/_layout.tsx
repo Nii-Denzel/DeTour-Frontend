@@ -3,6 +3,7 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { Text, View, StyleSheet, Platform } from "react-native";
 import { Colors } from "../../constants/colors";
+import { blue } from "react-native-reanimated/lib/typescript/Colors";
 
 interface TabIconProps {
   iconName: keyof typeof Ionicons | string;
@@ -116,13 +117,11 @@ const styles = StyleSheet.create({
   },
   iconLabel: {
     fontSize: 12,
-    marginTop: 4,
+   marginTop: 2,
     textAlign: "center",
   },
   tabBar: {
-    backgroundColor: Colors.gold,
-    borderTopColor: Colors.border || "#E5E7EB",
-    borderTopWidth: 2,
+    backgroundColor:'white',
     // Accommodate safe areas perfectly on newer iOS devices
     height: Platform.OS === "ios" ? 88 : 72,
     paddingBottom: Platform.OS === "ios" ? 28 : 12,
@@ -130,6 +129,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: -2 },
     shadowOpacity: 0.05,
     shadowRadius: 10,
-    elevation: 18,
+
   },
 });

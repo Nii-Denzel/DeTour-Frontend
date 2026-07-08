@@ -110,13 +110,13 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-  SafeAreaView,
   ScrollView,
   StatusBar,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../../constants/colors";
 import { TRANSACTIONS } from "../../constants/data";
 
@@ -131,8 +131,8 @@ const PAYMENT_METHODS = [
     icon: <MaterialCommunityIcons name="cellphone" size={22} color="#1a1a1a" />,
   },
   {
-    id: "vodafone",
-    label: "Vodafone Cash",
+    id: "Telecel",
+    label: "Telecel Cash",
     number: "050 987 6543",
     balance: "GHS 45.00",
     color: "#E60000",
@@ -162,6 +162,7 @@ export default function PaymentsScreen() {
           paddingTop: 16,
           paddingBottom: 14,
           backgroundColor: "#F4F6F5",
+          marginTop: 35,
         }}
       >
         <TouchableOpacity
@@ -206,8 +207,9 @@ export default function PaymentsScreen() {
           <View
             style={{
               borderRadius: 28,
+              marginTop: 10,
               overflow: "hidden",
-              marginBottom: 16,
+              marginBottom: 15,
               backgroundColor: Colors.green,
               shadowColor: Colors.green,
               shadowOffset: { width: 0, height: 8 },

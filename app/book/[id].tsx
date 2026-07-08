@@ -24,7 +24,7 @@ export default function BookScreen() {
 
   const attraction = ATTRACTIONS.find((a) => a.id === id);
 
-  const [selectedDate, setSelectedDate] = useState("May 25, 2025");
+  const [selectedDate, setSelectedDate] = useState("July 25, 2026");
   const [selectedTime, setSelectedTime] = useState("8:00 AM");
   const [people, setPeople] = useState(2);
   const [selectedGuide, setSelectedGuide] = useState(GUIDES[0].id);
@@ -33,7 +33,7 @@ export default function BookScreen() {
   if (!attraction) return null;
 
   const guide = GUIDES.find((g) => g.id === selectedGuide)!;
-  const total = guide.pricePerGroup;
+  const total = guide.pricePerGroup ;
 
   const handlePay = () => {
     Alert.alert(

@@ -409,7 +409,7 @@ export default function ExploreScreen() {
           borderBottomColor: "#EFEFEF",
         }}
       >
-        <Text
+        {/* <Text
           style={{
             fontSize: 26,
             fontWeight: "700",
@@ -419,7 +419,7 @@ export default function ExploreScreen() {
           }}
         >
           Explore
-        </Text>
+        </Text> */}
 
         {/* Search */}
         <View
@@ -429,7 +429,7 @@ export default function ExploreScreen() {
             backgroundColor: "#fff",
             borderRadius: 18,
             paddingHorizontal: 14,
-            paddingVertical: 13,
+            paddingVertical: 7,
             shadowColor: "#000",
             shadowOffset: { width: 0, height: 2 },
             shadowOpacity: 0.06,

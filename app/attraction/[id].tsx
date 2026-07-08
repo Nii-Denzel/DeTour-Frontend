@@ -114,31 +114,104 @@ export default function AttractionDetailScreen() {
         backgroundColor="transparent"
       />
 
+      {/* ── Floating nav buttons (fixed overlay) ── */}
+      <View
+        pointerEvents="box-none"
+        style={{
+          position: "absolute",
+          top: insets.top + 10,
+          left: 16,
+          right: 16,
+          zIndex: 20,
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          {/* Back */}
+          <TouchableOpacity
+            onPress={() => router.back()}
+            style={{
+              width: 42,
+              height: 42,
+              borderRadius: 21,
+              backgroundColor: "rgba(255,255,255,0.9)",
+              alignItems: "center",
+              justifyContent: "center",
+              shadowColor: "#000",
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.15,
+              shadowRadius: 6,
+              elevation: 4,
+            }}
+          >
+            <Ionicons name="chevron-back" size={22} color="#111827" />
+          </TouchableOpacity>
+
+          {/* Save + Share */}
+          <View style={{ flexDirection: "row", gap: 10 }}>
+            <TouchableOpacity
+              onPress={() => setSaved((p) => !p)}
+              style={{
+                width: 42,
+                height: 42,
+                borderRadius: 21,
+                backgroundColor: "rgba(255,255,255,0.9)",
+                alignItems: "center",
+                justifyContent: "center",
+                shadowColor: "#000",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.15,
+                shadowRadius: 6,
+                elevation: 4,
+              }}
+            >
+              <Ionicons
+                name={saved ? "heart" : "heart-outline"}
+                size={20}
+                color={saved ? "#EF4444" : "#111827"}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={{
+                width: 42,
+                height: 42,
+                borderRadius: 21,
+                backgroundColor: "rgba(255,255,255,0.9)",
+                alignItems: "center",
+                justifyContent: "center",
+                shadowColor: "#000",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.15,
+                shadowRadius: 6,
+                elevation: 4,
+              }}
+            >
+              <Feather name="share-2" size={18} color="#111827" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 120 }}
+        contentContainerStyle={{ paddingBottom: 85 }}
         bounces
       >
         {/* ═══════════════════════════
             HERO IMAGE
+            The image sits under the fixed nav buttons (they overlay the top part).
         ═══════════════════════════ */}
         <View style={{ position: "relative" }}>
           <Image
             source={{ uri: attraction.image }}
             style={{ width: "100%", height: 340 }}
             resizeMode="cover"
-          />
-
-          {/* Dark scrim at top for nav button readability */}
-          <View
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              height: 120,
-              backgroundColor: "rgba(0,0,0,0.25)",
-            }}
           />
 
           {/* Bottom scrim with name */}
@@ -148,10 +221,10 @@ export default function AttractionDetailScreen() {
               bottom: 0,
               left: 0,
               right: 0,
-              paddingHorizontal: 20,
-              paddingBottom: 20,
-              paddingTop: 60,
-              backgroundColor: "rgba(11,70,42,0.72)",
+              padding: 10,
+              borderTopRightRadius:20,
+              borderTopLeftRadius:20,
+              backgroundColor: Colors.green,
             }}
           >
             {/* Category chip */}
@@ -194,7 +267,7 @@ export default function AttractionDetailScreen() {
                 flexDirection: "row",
                 alignItems: "center",
                 gap: 5,
-                marginTop: 6,
+                marginTop: 9,
               }}
             >
               <Ionicons
@@ -207,83 +280,6 @@ export default function AttractionDetailScreen() {
               </Text>
             </View>
           </View>
-
-          {/* ── Floating nav buttons ── */}
-          <View
-            style={{
-              position: "absolute",
-              top: insets.top + 10,
-              left: 16,
-              right: 16,
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            {/* Back */}
-            <TouchableOpacity
-              onPress={() => router.back()}
-              style={{
-                width: 42,
-                height: 42,
-                borderRadius: 21,
-                backgroundColor: "rgba(255,255,255,0.9)",
-                alignItems: "center",
-                justifyContent: "center",
-                shadowColor: "#000",
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.15,
-                shadowRadius: 6,
-                elevation: 4,
-              }}
-            >
-              <Ionicons name="chevron-back" size={22} color="#111827" />
-            </TouchableOpacity>
-
-            {/* Save + Share */}
-            <View style={{ flexDirection: "row", gap: 10 }}>
-              <TouchableOpacity
-                onPress={() => setSaved((p) => !p)}
-                style={{
-                  width: 42,
-                  height: 42,
-                  borderRadius: 21,
-                  backgroundColor: "rgba(255,255,255,0.9)",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  shadowColor: "#000",
-                  shadowOffset: { width: 0, height: 2 },
-                  shadowOpacity: 0.15,
-                  shadowRadius: 6,
-                  elevation: 4,
-                }}
-              >
-                <Ionicons
-                  name={saved ? "heart" : "heart-outline"}
-                  size={20}
-                  color={saved ? "#EF4444" : "#111827"}
-                />
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={{
-                  width: 42,
-                  height: 42,
-                  borderRadius: 21,
-                  backgroundColor: "rgba(255,255,255,0.9)",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  shadowColor: "#000",
-                  shadowOffset: { width: 0, height: 2 },
-                  shadowOpacity: 0.15,
-                  shadowRadius: 6,
-                  elevation: 4,
-                }}
-              >
-                <Feather name="share-2" size={18} color="#111827" />
-              </TouchableOpacity>
-            </View>
-          </View>
         </View>
 
         {/* ═══════════════════════════
@@ -292,9 +288,6 @@ export default function AttractionDetailScreen() {
         <View
           style={{
             backgroundColor: "#fff",
-            borderTopLeftRadius: 32,
-            borderTopRightRadius: 32,
-            marginTop: -24,
             paddingHorizontal: 20,
             paddingTop: 28,
           }}
